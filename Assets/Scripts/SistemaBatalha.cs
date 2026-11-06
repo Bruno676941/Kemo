@@ -10,11 +10,22 @@ public class SistemaBatalha: MonoBehaviour
     public TMP_Text PlayerHPTexto;
     public TMP_Text InimigoHPTexto;
 
+    public GameObject PainelBatalha;
+
+    public GameObject BotaoContinuar;
+
     void Start()
     {
         AtualizarUI();
     }
+    public void IniciarBatalha()
+    {
+        PlayerHP = 30;
+        InimigoHP = 20;
 
+        AtualizarUI();
+        BotaoContinuar.SetActive(false);
+    }
     public void Atacar()
     {
         InimigoHP -= 10;
@@ -22,6 +33,7 @@ public class SistemaBatalha: MonoBehaviour
         if (InimigoHP <= 0)
         {
             InimigoHPTexto.text = "Voce venceu!";
+            BotaoContinuar.SetActive(true);
             return;
         }
 
@@ -35,7 +47,10 @@ public class SistemaBatalha: MonoBehaviour
 
         AtualizarUI();
     }
-
+    public void Continuar()
+    {
+        PainelBatalha.SetActive(false);
+    }
     void AtualizarUI()
     {
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
