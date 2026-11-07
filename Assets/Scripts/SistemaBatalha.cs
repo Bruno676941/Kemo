@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 public enum EstadoBatalha
 {
     TurnoJogador,
@@ -62,31 +63,33 @@ public class SistemaBatalha: MonoBehaviour
 
         estadoAtual = EstadoBatalha.TurnoInimigo;
 
-        AtaqueInimigo();
-
-        void AtaqueInimigo()
-        {
-            PlayerHP -= 5;
-
-            if (PlayerHP <= 0)
-            {
-                estadoAtual = EstadoBatalha.Derrota;
-
-                PlayerHPTexto.text = "Game Over";
-
-                BotaoContinuar.SetActive(true);
-
-                return;
-            }
-
-            AtualizarUI();
-
-            estadoAtual = EstadoBatalha.TurnoJogador;
-        }
-
+        StartCoroutine(AtaqueInimigo());
 
     }
-    
+
+    IEnumerator AtaqueInimigo()
+    {
+        yield return new WaitForSeconds(1f);
+
+        PlayerHP -= 5;
+
+        if (PlayerHP <= 0)
+        {
+            estadoAtual = EstadoBatalha.Derrota;
+
+            PlayerHPTexto.text = "Game Over";
+
+            BotaoContinuar.SetActive(true);
+
+            yield break;
+        }
+
+        AtualizarUI();
+
+        estadoAtual = EstadoBatalha.TurnoJogador;
+    }
+
+
     public void Continuar()
     {
         PainelBatalha.SetActive(false);
