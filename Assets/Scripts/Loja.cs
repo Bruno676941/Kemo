@@ -9,9 +9,30 @@ public class Loja : MonoBehaviour
 
     public TMP_Text TextoEntradaLoja;
 
+    public Inventario inventario;
+
+    public TMP_Text TextoMoedasLoja;
+
     private void Start()
     {
         TextoEntradaLoja.gameObject.SetActive(false);
+    }
+    void AtualizarLoja()
+    {
+        TextoMoedasLoja.text =
+            "Moedas: " + inventario.Moedas;
+    }
+
+    public void ComprarPocao()
+    {
+        if (inventario.Moedas >= 10)
+        {
+            inventario.Moedas -= 10;
+            inventario.Pocoes += 1;
+
+            inventario.AtualizarInventario();
+            AtualizarLoja();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +61,7 @@ public class Loja : MonoBehaviour
         {
             PainelLoja.SetActive(true);
             TextoEntradaLoja.gameObject.SetActive(false);
+            AtualizarLoja();
         }
     }
 
