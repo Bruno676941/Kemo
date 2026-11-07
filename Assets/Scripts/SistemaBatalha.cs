@@ -1,9 +1,16 @@
 using TMPro;
 using UnityEngine;
+public enum EstadoBatalha
+{
+    TurnoJogador,
+    TurnoInimigo,
+    Vitoria,
+    Derrota
+}
 
 public class SistemaBatalha: MonoBehaviour
 {
-
+    public EstadoBatalha estadoAtual;
     public int PlayerHP = 30;
     public int InimigoHP = 20;
 
@@ -25,28 +32,61 @@ public class SistemaBatalha: MonoBehaviour
 
         AtualizarUI();
         BotaoContinuar.SetActive(false);
+        estadoAtual = EstadoBatalha.TurnoJogador;
+
     }
     public void Atacar()
     {
-        InimigoHP -= 10;
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
+        {
+            return;
+        }
+
+        InimigoHP -= 5;
 
         if (InimigoHP <= 0)
         {
             InimigoHPTexto.text = "Voce venceu!";
+            estadoAtual = EstadoBatalha.Vitoria;
             BotaoContinuar.SetActive(true);
             return;
         }
 
-        PlayerHP -= 5;
-
         if (PlayerHP <= 0)
         {
             PlayerHPTexto.text = "Game Over";
+            estadoAtual = EstadoBatalha.Derrota;
             return;
         }
-
         AtualizarUI();
+
+        estadoAtual = EstadoBatalha.TurnoInimigo;
+
+        AtaqueInimigo();
+
+        void AtaqueInimigo()
+        {
+            PlayerHP -= 5;
+
+            if (PlayerHP <= 0)
+            {
+                estadoAtual = EstadoBatalha.Derrota;
+
+                PlayerHPTexto.text = "Game Over";
+
+                BotaoContinuar.SetActive(true);
+
+                return;
+            }
+
+            AtualizarUI();
+
+            estadoAtual = EstadoBatalha.TurnoJogador;
+        }
+
+
     }
+    
     public void Continuar()
     {
         PainelBatalha.SetActive(false);
