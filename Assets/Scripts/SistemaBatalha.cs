@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 public enum EstadoBatalha
 {
     TurnoJogador,
@@ -18,9 +19,13 @@ public class SistemaBatalha: MonoBehaviour
     public TMP_Text PlayerHPTexto;
     public TMP_Text InimigoHPTexto;
 
+    public TMP_Text TextoTurno;
+
     public GameObject PainelBatalha;
 
     public GameObject BotaoContinuar;
+
+    public Button BotaoAtaque;
 
     void Start()
     {
@@ -34,7 +39,8 @@ public class SistemaBatalha: MonoBehaviour
         AtualizarUI();
         BotaoContinuar.SetActive(false);
         estadoAtual = EstadoBatalha.TurnoJogador;
-
+        TextoTurno.text = "Turno do Jogador";
+        BotaoAtaque.interactable = true;
     }
     public void Atacar()
     {
@@ -62,7 +68,8 @@ public class SistemaBatalha: MonoBehaviour
         AtualizarUI();
 
         estadoAtual = EstadoBatalha.TurnoInimigo;
-
+        TextoTurno.text = "Turno do Inimigo";
+        BotaoAtaque.interactable = false;
         StartCoroutine(AtaqueInimigo());
 
     }
@@ -87,6 +94,8 @@ public class SistemaBatalha: MonoBehaviour
         AtualizarUI();
 
         estadoAtual = EstadoBatalha.TurnoJogador;
+        TextoTurno.text = "Turno do Jogador";
+        BotaoAtaque.interactable = true;
     }
 
 

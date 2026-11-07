@@ -4,12 +4,13 @@ public class BattleTrigger : MonoBehaviour
 
 {
     public GameObject PainelBatalha;
+    public SistemaBatalha sistemaBatalha;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             PainelBatalha.SetActive(true);
-            Debug.Log("Batalha iniciada!");
-        }
+            sistemaBatalha.IniciarBatalha();
+}
     }
 }
