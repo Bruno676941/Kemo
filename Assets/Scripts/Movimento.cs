@@ -44,7 +44,7 @@ public class Movimento : MonoBehaviour
             VelocidadeY = 0f;
         }
         Vector3 movimento = new Vector3(movimentoHorizontal * velocidadeAtual, VelocidadeY, movimentoVertical * velocidadeAtual);
-        transform.Translate(movimento * Time.deltaTime, Space.World);
+        controller.Move(movimento * Time.deltaTime);
 
         if (direcao.sqrMagnitude >= 0.01f)
         {
