@@ -1,3 +1,4 @@
+using Unity.InferenceEngine;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.UIElements;
@@ -5,12 +6,14 @@ using UnityEngine.UIElements;
 public class Movimento : MonoBehaviour
 {
     private CharacterController controller;
+    public Transform Player;
     public float VelocidadeMovimento = 5f;
     public float VelocidadeCorrida = 20f;
     public float ForcaPulo = 7f;
     public float Gravidade = -9.81f;
     private float VelocidadeY;
     public float alturaDoChao = 1f;
+    public float suavidadeRotacao = 5f;
     void Start()
     {
      controller = GetComponent<CharacterController>();
@@ -19,6 +22,8 @@ public class Movimento : MonoBehaviour
     {
         float movimentoHorizontal = Input.GetAxis("Horizontal");
         float movimentoVertical = Input.GetAxis("Vertical");
+
+        Vector3 direcao = new Vector3(movimentoHorizontal, 0f, movimentoVertical).normalized;
 
         float velocidadeAtual = VelocidadeMovimento;
         if (Input.GetKey(KeyCode.LeftShift))
@@ -40,6 +45,13 @@ public class Movimento : MonoBehaviour
         }
         Vector3 movimento = new Vector3(movimentoHorizontal * velocidadeAtual, VelocidadeY, movimentoVertical * velocidadeAtual);
         transform.Translate(movimento * Time.deltaTime, Space.World);
+
+        if (direcao.sqrMagnitude >= 0.01f)
+        {
+            Quaternion rotacaoDesejada = Quaternion.LookRotation(direcao);
+
+            Player.rotation = Quaternion.Slerp(Player.rotation, rotacaoDesejada, suavidadeRotacao * Time.deltaTime);
+        }
     }
 }
 
