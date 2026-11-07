@@ -29,6 +29,8 @@ public class SistemaBatalha: MonoBehaviour
 
     public TMP_Text TextoResultado;
 
+    public Inventario inventario;
+
     void Start()
     {
         AtualizarUI();
@@ -56,8 +58,10 @@ public class SistemaBatalha: MonoBehaviour
 
         if (InimigoHP <= 0)
         {
-            TextoResultado.text = "Voce venceu!";
+            TextoResultado.text = "VOCE VENCEU!\n+10 moedas";
             estadoAtual = EstadoBatalha.Vitoria;
+            inventario.Moedas += 10;
+            inventario.AtualizarInventario();
             TextoResultado.gameObject.SetActive(true);
             BotaoContinuar.SetActive(true);
             PlayerHPTexto.gameObject.SetActive(false);

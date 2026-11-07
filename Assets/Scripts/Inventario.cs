@@ -7,11 +7,13 @@ public class Inventario : MonoBehaviour
         public int Pocoes;
         public TMP_Text TextoInventario;
         public GameObject PainelInventario;
+        public int Moedas;
     public void AtualizarInventario()
     {
         TextoInventario.text =
             "Inventário\n\n" +
-            "Chaves: " + Chaves +
+            "Moedas: " + Moedas +
+            "\nChaves: " + Chaves +
             "\nPoções: " + Pocoes;
     }
 
