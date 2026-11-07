@@ -27,6 +27,8 @@ public class SistemaBatalha: MonoBehaviour
 
     public Button BotaoAtaque;
 
+    public TMP_Text TextoResultado;
+
     void Start()
     {
         AtualizarUI();
@@ -37,6 +39,7 @@ public class SistemaBatalha: MonoBehaviour
         InimigoHP = 20;
 
         AtualizarUI();
+        TextoResultado.gameObject.SetActive(false);
         BotaoContinuar.SetActive(false);
         estadoAtual = EstadoBatalha.TurnoJogador;
         TextoTurno.text = "Turno do Jogador";
@@ -53,22 +56,32 @@ public class SistemaBatalha: MonoBehaviour
 
         if (InimigoHP <= 0)
         {
-            InimigoHPTexto.text = "Voce venceu!";
+            TextoResultado.text = "Voce venceu!";
             estadoAtual = EstadoBatalha.Vitoria;
+            TextoResultado.gameObject.SetActive(true);
             BotaoContinuar.SetActive(true);
+            PlayerHPTexto.gameObject.SetActive(false);
+            InimigoHPTexto.gameObject.SetActive(false);
+            TextoTurno.gameObject.SetActive(false);
+            BotaoAtaque.gameObject.SetActive(false);
             return;
         }
 
         if (PlayerHP <= 0)
         {
-            PlayerHPTexto.text = "Game Over";
+            TextoResultado.text = "Game Over";
             estadoAtual = EstadoBatalha.Derrota;
+            PlayerHPTexto.gameObject.SetActive(false);
+            InimigoHPTexto.gameObject.SetActive(false);
+            TextoTurno.gameObject.SetActive(false);
+            BotaoAtaque.gameObject.SetActive(false);
             return;
         }
         AtualizarUI();
 
         estadoAtual = EstadoBatalha.TurnoInimigo;
         TextoTurno.text = "Turno do Inimigo";
+        TextoResultado.gameObject.SetActive(true);
         BotaoAtaque.interactable = false;
         StartCoroutine(AtaqueInimigo());
 
