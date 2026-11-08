@@ -7,6 +7,7 @@ public class InimigoIA : MonoBehaviour
     public float distanciaperseguicao = 5f;
 
     public SistemaBatalha inimigoHP;
+ 
 
     void Start()
     {
