@@ -12,7 +12,7 @@ public class Inventario : MonoBehaviour
     {
         TextoInventario.text =
             "Inventário\n\n" +
-            "Moedas: " + Moedas +
+            "\nMoedas: " + Moedas +
             "\nChaves: " + Chaves +
             "\nPoções: " + Pocoes;
     }

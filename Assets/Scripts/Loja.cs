@@ -12,10 +12,13 @@ public class Loja : MonoBehaviour
     public Inventario inventario;
 
     public TMP_Text TextoMoedasLoja;
+    public TMP_Text TextoItemLoja;
 
     private void Start()
     {
         TextoEntradaLoja.gameObject.SetActive(false);
+        TextoItemLoja.text =
+       "🧪 Poção de Vida | Cura 10 HP | Preço: 10 moedas"; 
     }
     void AtualizarLoja()
     {
