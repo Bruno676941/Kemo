@@ -9,8 +9,11 @@ public class BattleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sistemaBatalha.definirInimigo(gameObject.name, gameObject);
+            Debug.Log("TOCOU NO " + gameObject.name);
             PainelBatalha.SetActive(true);
             sistemaBatalha.IniciarBatalha();
 }
+
     }
 }

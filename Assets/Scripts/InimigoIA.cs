@@ -6,11 +6,16 @@ public class InimigoIA : MonoBehaviour
     public float velocidade = 3f;
     public float distanciaperseguicao = 5f;
 
+<<<<<<< Updated upstream
     public SistemaBatalha inimigoHP;
+=======
+    public SistemaBatalha inimigoAtual;
+ 
+>>>>>>> Stashed changes
 
     void Start()
     {
-        inimigoHP = FindAnyObjectByType<SistemaBatalha>();
+        inimigoAtual = FindAnyObjectByType<SistemaBatalha>();
     }
 
     void Update()
@@ -31,8 +36,9 @@ public class InimigoIA : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position, player.position, velocidade * Time.deltaTime);
         }
-        if (inimigoHP.InimigoHP <= 0)
+        if (inimigoAtual.estadoAtual == EstadoBatalha.Vitoria || inimigoAtual.estadoAtual == EstadoBatalha.Derrota)
         {
+            this.enabled = false;
             Destroy(gameObject);
         }
     }

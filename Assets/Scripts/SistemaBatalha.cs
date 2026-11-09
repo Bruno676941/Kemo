@@ -1,6 +1,8 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 public enum EstadoBatalha
 {
@@ -14,7 +16,9 @@ public class SistemaBatalha: MonoBehaviour
 {
     public EstadoBatalha estadoAtual;
     public int PlayerHP = 30;
-    public int InimigoHP = 20;
+    public int InimigoHP = 1;
+
+   
 
     public TMP_Text PlayerHPTexto;
     public TMP_Text InimigoHPTexto;
@@ -29,6 +33,14 @@ public class SistemaBatalha: MonoBehaviour
 
     public TMP_Text TextoResultado;
 
+<<<<<<< Updated upstream
+=======
+    public Inventario inventario;
+
+    public List<Inimigo> inimigos = new List<Inimigo>();
+    public Inimigo inimigoAtual;
+    public GameObject inimigoObjetoAtual;
+>>>>>>> Stashed changes
     void Start()
     {
         AtualizarUI();
@@ -36,9 +48,10 @@ public class SistemaBatalha: MonoBehaviour
     public void IniciarBatalha()
     {
         PlayerHP = 30;
-        InimigoHP = 20;
+        InimigoHP = inimigoAtual.HP;
 
         AtualizarUI();
+        PainelBatalha.SetActive(true);
         TextoResultado.gameObject.SetActive(false);
         BotaoContinuar.SetActive(false);
         estadoAtual = EstadoBatalha.TurnoJogador;
@@ -52,12 +65,21 @@ public class SistemaBatalha: MonoBehaviour
             return;
         }
 
-        InimigoHP -= 5;
+        inimigoAtual.HP -= 5;
 
-        if (InimigoHP <= 0)
+        if (inimigoAtual.HP <= 0)
         {
+<<<<<<< Updated upstream
             TextoResultado.text = "Voce venceu!";
             estadoAtual = EstadoBatalha.Vitoria;
+=======
+            
+            TextoResultado.text = "VOCE VENCEU!\n+" + inimigoAtual.Recompensa + " moedas";
+            estadoAtual = EstadoBatalha.Vitoria;
+            inventario.Moedas += inimigoAtual.Recompensa;
+            inventario.AtualizarInventario();
+            BotaoContinuar.SetActive(true);
+>>>>>>> Stashed changes
             TextoResultado.gameObject.SetActive(true);
             BotaoContinuar.SetActive(true);
             PlayerHPTexto.gameObject.SetActive(false);
@@ -91,7 +113,7 @@ public class SistemaBatalha: MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        PlayerHP -= 5;
+        PlayerHP -= inimigoAtual.Dano;
 
         if (PlayerHP <= 0)
         {
@@ -119,7 +141,12 @@ public class SistemaBatalha: MonoBehaviour
     void AtualizarUI()
     {
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
-        InimigoHPTexto.text = "Slime HP: " + InimigoHP;
+        InimigoHPTexto.text = inimigoAtual.Nome + " HP: " + inimigoAtual.HP;
+    }
+    public void definirInimigo(string Nome, GameObject objeto)
+    {
+        inimigoAtual = inimigos.Find(inimigo => inimigo.Nome == Nome);
+        inimigoObjetoAtual = objeto;
     }
 }
 
