@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class Movimento : MonoBehaviour
 {
+    
     private CharacterController controller;
     public Transform Player;
     public float VelocidadeMovimento = 5f;

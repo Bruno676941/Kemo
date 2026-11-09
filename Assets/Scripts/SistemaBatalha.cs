@@ -31,12 +31,15 @@ public class SistemaBatalha: MonoBehaviour
 
     public Inventario inventario;
 
+    public Movimento movimentoJogador; 
+
     void Start()
     {
         AtualizarUI();
     }
     public void IniciarBatalha()
     {
+        movimentoJogador.enabled = false;
         PlayerHP = 30;
         InimigoHP = 20;
 
@@ -120,6 +123,7 @@ public class SistemaBatalha: MonoBehaviour
 
     public void Continuar()
     {
+        movimentoJogador.enabled = true;
         PainelBatalha.SetActive(false);
     }
     void AtualizarUI()
