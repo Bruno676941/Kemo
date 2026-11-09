@@ -40,10 +40,15 @@ public class SistemaBatalha: MonoBehaviour
     }
     public void IniciarBatalha()
     {
+        Debug.Log("BATALHA INICIADA: " + inimigoAtual.Nome);
         PlayerHP = 30;
 
         AtualizarUI();
         PainelBatalha.SetActive(true);
+        PlayerHPTexto.gameObject.SetActive(true);
+        InimigoHPTexto.gameObject.SetActive(true);
+        TextoTurno.gameObject.SetActive(true);
+        BotaoAtaque.gameObject.SetActive(true);
         TextoResultado.gameObject.SetActive(false);
         BotaoContinuar.SetActive(false);
         estadoAtual = EstadoBatalha.TurnoJogador;
