@@ -144,5 +144,24 @@ public class SistemaBatalha: MonoBehaviour
         inimigoAtual = inimigos.Find(inimigo => inimigo.Nome == Nome);
         inimigoObjetoAtual = objeto;
     }
+
+    public void item()
+    {
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
+        {
+            return;
+        }
+        if (inventario.Pocoes > 0)
+        {
+            PlayerHP += 10;
+            inventario.Pocoes -= 1;
+            inventario.AtualizarInventario();
+            AtualizarUI();
+            estadoAtual = EstadoBatalha.TurnoInimigo;
+            TextoTurno.text = "Turno do Inimigo";
+            BotaoAtaque.interactable = false;
+            StartCoroutine(AtaqueInimigo());
+        }
+    }
 }
 
