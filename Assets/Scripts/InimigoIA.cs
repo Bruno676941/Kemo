@@ -7,12 +7,6 @@ public class InimigoIA : MonoBehaviour
     public float distanciaperseguicao = 5f;
 
     public SistemaBatalha inimigoHP;
- 
-
-    void Start()
-    {
-        inimigoHP = FindAnyObjectByType<SistemaBatalha>();
-    }
 
     void Update()
     {
@@ -32,9 +26,6 @@ public class InimigoIA : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position, player.position, velocidade * Time.deltaTime);
         }
-        if (inimigoHP.InimigoHP <= 0)
-        {
-            Destroy(gameObject);
-        }
+      
     }
 }
