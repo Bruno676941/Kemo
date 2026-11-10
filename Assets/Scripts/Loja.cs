@@ -13,12 +13,15 @@ public class Loja : MonoBehaviour
 
     public TMP_Text TextoMoedasLoja;
     public TMP_Text TextoItemLoja;
+    public TMP_Text TextoItemLoja2;
 
     private void Start()
     {
         TextoEntradaLoja.gameObject.SetActive(false);
         TextoItemLoja.text =
        "🧪 Poção de Vida | Cura 10 HP | Preço: 10 moedas"; 
+
+        TextoItemLoja2.text = "✌ Chave | Abre portas trancadas | Preço: 20 moedas";
     }
     void AtualizarLoja()
     {
@@ -33,6 +36,16 @@ public class Loja : MonoBehaviour
             inventario.Moedas -= 10;
             inventario.Pocoes += 1;
 
+            inventario.AtualizarInventario();
+            AtualizarLoja();
+        }
+    }
+    public void ComprarChave()
+    {
+        if (inventario.Moedas >= 20)
+        {
+            inventario.Moedas -= 20;
+            inventario.Chaves += 1;
             inventario.AtualizarInventario();
             AtualizarLoja();
         }
