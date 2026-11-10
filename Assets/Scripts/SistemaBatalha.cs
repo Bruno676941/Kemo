@@ -217,15 +217,10 @@ public class SistemaBatalha: MonoBehaviour
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
         InimigoHPTexto.text = inimigoAtual.Nome + " HP: " + inimigoAtual.HP;
     }
-    public void TesteBotao()
-    {
-        Debug.Log("BOTAO FUNCIONOU");
-    }
     public void definirInimigo(string Nome, GameObject objeto)
     {
-        Debug.Log("Procurando: " + Nome);
+        
         inimigoAtual = inimigos.Find(inimigo => inimigo.Nome == Nome);
-        Debug.Log("Resultado: " + inimigoAtual);
         inimigoObjetoAtual = objeto;
     }
     public void AbrirItens()
