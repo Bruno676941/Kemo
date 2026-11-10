@@ -28,6 +28,8 @@ public class SistemaBatalha: MonoBehaviour
 
     public Button BotaoAtaque;
 
+    public Button BotaoItem;
+
     public TMP_Text TextoResultado;
     public Inventario inventario;
 
@@ -51,9 +53,11 @@ public class SistemaBatalha: MonoBehaviour
         BotaoAtaque.gameObject.SetActive(true);
         TextoResultado.gameObject.SetActive(false);
         BotaoContinuar.SetActive(false);
+        BotaoItem.gameObject.SetActive(true);
         estadoAtual = EstadoBatalha.TurnoJogador;
         TextoTurno.text = "Turno do Jogador";
         BotaoAtaque.interactable = true;
+        BotaoItem.interactable = true;
     }
     public void Atacar()
     {
@@ -82,6 +86,7 @@ public class SistemaBatalha: MonoBehaviour
             InimigoHPTexto.gameObject.SetActive(false);
             TextoTurno.gameObject.SetActive(false);
             BotaoAtaque.gameObject.SetActive(false);
+            BotaoItem.gameObject.SetActive(false);
             return;
         }
 
@@ -93,6 +98,7 @@ public class SistemaBatalha: MonoBehaviour
             InimigoHPTexto.gameObject.SetActive(false);
             TextoTurno.gameObject.SetActive(false);
             BotaoAtaque.gameObject.SetActive(false);
+            BotaoItem.gameObject.SetActive(false);
             return;
         }
         AtualizarUI();
@@ -101,12 +107,15 @@ public class SistemaBatalha: MonoBehaviour
         TextoTurno.text = "Turno do Inimigo";
         TextoResultado.gameObject.SetActive(true);
         BotaoAtaque.interactable = false;
+        BotaoItem.interactable = false;
         StartCoroutine(AtaqueInimigo());
 
     }
 
     IEnumerator AtaqueInimigo()
     {
+        TextoResultado.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1f);
 
         PlayerHP -= inimigoAtual.Dano;
@@ -124,9 +133,11 @@ public class SistemaBatalha: MonoBehaviour
 
         AtualizarUI();
 
+        TextoResultado.gameObject.SetActive(false);
         estadoAtual = EstadoBatalha.TurnoJogador;
         TextoTurno.text = "Turno do Jogador";
         BotaoAtaque.interactable = true;
+        BotaoItem.interactable = true;
     }
 
 
