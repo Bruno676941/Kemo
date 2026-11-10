@@ -33,6 +33,8 @@ public class SistemaBatalha: MonoBehaviour
     public TMP_Text TextoResultado;
     public Inventario inventario;
 
+    public Movimento movimentoJogador;
+
     public List<Inimigo> inimigos = new List<Inimigo>();
     private Inimigo inimigoAtual;
     private GameObject inimigoObjetoAtual;
@@ -58,6 +60,7 @@ public class SistemaBatalha: MonoBehaviour
         TextoTurno.text = "Turno do Jogador";
         BotaoAtaque.interactable = true;
         BotaoItem.interactable = true;
+        movimentoJogador.enabled = false;
     }
     public void Atacar()
     {
@@ -87,6 +90,7 @@ public class SistemaBatalha: MonoBehaviour
             TextoTurno.gameObject.SetActive(false);
             BotaoAtaque.gameObject.SetActive(false);
             BotaoItem.gameObject.SetActive(false);
+            movimentoJogador.enabled = true;
             return;
         }
 
@@ -99,6 +103,7 @@ public class SistemaBatalha: MonoBehaviour
             TextoTurno.gameObject.SetActive(false);
             BotaoAtaque.gameObject.SetActive(false);
             BotaoItem.gameObject.SetActive(false);
+            movimentoJogador.enabled = true;
             return;
         }
         AtualizarUI();
