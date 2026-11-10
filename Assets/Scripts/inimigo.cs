@@ -7,4 +7,6 @@ public class Inimigo
     public int HP;
     public int Dano;
     public int Recompensa;
+
+    public int iniciativa;
 }
