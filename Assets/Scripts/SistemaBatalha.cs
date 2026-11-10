@@ -21,6 +21,7 @@ public class SistemaBatalha: MonoBehaviour
     public TMP_Text InimigoHPTexto;
 
     public TMP_Text TextoTurno;
+    public TMP_Text TextoPocoes;
 
     public GameObject PainelBatalha;
 
@@ -38,6 +39,8 @@ public class SistemaBatalha: MonoBehaviour
     public List<Inimigo> inimigos = new List<Inimigo>();
     private Inimigo inimigoAtual;
     private GameObject inimigoObjetoAtual;
+
+    public GameObject PainelItem;
     void Start()
     {
         AtualizarUI();
@@ -160,8 +163,28 @@ public class SistemaBatalha: MonoBehaviour
         inimigoAtual = inimigos.Find(inimigo => inimigo.Nome == Nome);
         inimigoObjetoAtual = objeto;
     }
-
-    public void item()
+    public void AbrirItens()
+    {
+        PainelItem.SetActive(true);
+        BotaoAtaque.gameObject.SetActive(false);
+        BotaoItem.gameObject.SetActive(false);
+        PlayerHPTexto.gameObject.SetActive(false);
+        InimigoHPTexto.gameObject.SetActive(false);
+        TextoTurno.gameObject.SetActive(false);
+        TextoPocoes.text =
+    "Poções: " + inventario.Pocoes;
+    }
+    public void FecharItens()
+    {
+        PainelItem.SetActive(false);
+        PainelBatalha.SetActive(true);
+        BotaoAtaque.gameObject.SetActive(true);
+        BotaoItem.gameObject.SetActive(true);
+        TextoTurno.gameObject.SetActive(true);
+        PlayerHPTexto.gameObject.SetActive(true);
+        InimigoHPTexto.gameObject.SetActive(true);
+    }
+    public void UsarPocao()
     {
         if (estadoAtual != EstadoBatalha.TurnoJogador)
         {
@@ -176,6 +199,14 @@ public class SistemaBatalha: MonoBehaviour
             estadoAtual = EstadoBatalha.TurnoInimigo;
             TextoTurno.text = "Turno do Inimigo";
             BotaoAtaque.interactable = false;
+            BotaoItem.interactable = false;
+            PainelItem.SetActive(false);
+            PainelBatalha.SetActive(true);
+            BotaoAtaque.gameObject.SetActive(true);
+            BotaoItem.gameObject.SetActive(true);
+            TextoTurno.gameObject.SetActive(true);
+            PlayerHPTexto.gameObject.SetActive(true);
+            InimigoHPTexto.gameObject.SetActive(true);
             StartCoroutine(AtaqueInimigo());
         }
     }
