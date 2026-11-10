@@ -26,7 +26,7 @@ public class Loja : MonoBehaviour
     void AtualizarLoja()
     {
         TextoMoedasLoja.text =
-            "Moedas: " + inventario.Moedas;
+            "Moedas:        " + inventario.Moedas;
     }
 
     public void ComprarPocao()
