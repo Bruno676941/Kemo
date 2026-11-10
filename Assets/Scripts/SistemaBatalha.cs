@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -216,9 +217,15 @@ public class SistemaBatalha: MonoBehaviour
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
         InimigoHPTexto.text = inimigoAtual.Nome + " HP: " + inimigoAtual.HP;
     }
+    public void TesteBotao()
+    {
+        Debug.Log("BOTAO FUNCIONOU");
+    }
     public void definirInimigo(string Nome, GameObject objeto)
     {
+        Debug.Log("Procurando: " + Nome);
         inimigoAtual = inimigos.Find(inimigo => inimigo.Nome == Nome);
+        Debug.Log("Resultado: " + inimigoAtual);
         inimigoObjetoAtual = objeto;
     }
     public void AbrirItens()
@@ -230,7 +237,7 @@ public class SistemaBatalha: MonoBehaviour
         InimigoHPTexto.gameObject.SetActive(false);
         TextoTurno.gameObject.SetActive(false);
         TextoPocoes.text =
-    "Poções: " + inventario.Pocoes;
+    "Poï¿½ï¿½es: " + inventario.Pocoes;
     }
     public void FecharItens()
     {
@@ -268,5 +275,6 @@ public class SistemaBatalha: MonoBehaviour
             StartCoroutine(AtaqueInimigo());
         }
     }
+
 }
 

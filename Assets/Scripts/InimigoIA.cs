@@ -4,7 +4,7 @@ public class InimigoIA : MonoBehaviour
 {
     public Transform player;
     public float velocidade = 3f;
-    public float distanciaperseguicao = 5f;
+    public float distanciaperseguicao = 10f;
 
     public SistemaBatalha inimigoHP;
 
