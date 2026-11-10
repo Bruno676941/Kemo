@@ -15,7 +15,9 @@ public enum EstadoBatalha
 public class SistemaBatalha: MonoBehaviour
 {
     public EstadoBatalha estadoAtual;
-    public int PlayerHP = 30;
+    public int PlayerHP;
+
+    public int iniciativa;
 
     public TMP_Text PlayerHPTexto;
     public TMP_Text InimigoHPTexto;
@@ -40,16 +42,20 @@ public class SistemaBatalha: MonoBehaviour
     private Inimigo inimigoAtual;
     private GameObject inimigoObjetoAtual;
 
+    public StatusJogador statusJogador;
+
     public GameObject PainelItem;
     void Start()
     {
+        statusJogador.InicializarStatus();
+        PlayerHP = statusJogador.vida;
         AtualizarUI();
     }
     public void IniciarBatalha()
     {
         Debug.Log("BATALHA INICIADA: " + inimigoAtual.Nome);
-        PlayerHP = 30;
 
+       
         AtualizarUI();
         PainelBatalha.SetActive(true);
         PlayerHPTexto.gameObject.SetActive(true);
@@ -59,11 +65,10 @@ public class SistemaBatalha: MonoBehaviour
         TextoResultado.gameObject.SetActive(false);
         BotaoContinuar.SetActive(false);
         BotaoItem.gameObject.SetActive(true);
-        estadoAtual = EstadoBatalha.TurnoJogador;
-        TextoTurno.text = "Turno do Jogador";
-        BotaoAtaque.interactable = true;
-        BotaoItem.interactable = true;
+        DefinirPrimeiroTurno();
         movimentoJogador.enabled = false;
+
+       
     }
     public void Atacar()
     {
@@ -72,7 +77,7 @@ public class SistemaBatalha: MonoBehaviour
             return;
         }
 
-        inimigoAtual.HP -= 5;
+        inimigoAtual.HP -= statusJogador.dano;
         AtualizarUI();
         if (inimigoAtual.HP <= 0)
         {
@@ -119,7 +124,50 @@ public class SistemaBatalha: MonoBehaviour
         StartCoroutine(AtaqueInimigo());
 
     }
+    void DefinirPrimeiroTurno()
+    {
+        int iniciativaJogador = statusJogador.iniciativa;
+        int iniciativaInimigo = inimigoAtual.iniciativa;
 
+        if (iniciativaJogador > iniciativaInimigo)
+        {
+            estadoAtual = EstadoBatalha.TurnoJogador;
+        }
+        else if (iniciativaInimigo > iniciativaJogador)
+        {
+            estadoAtual = EstadoBatalha.TurnoInimigo;
+        }
+        else
+        {
+            int resultado = UnityEngine.Random.Range(1, 3);
+
+            if (resultado == 1)
+            {
+                estadoAtual = EstadoBatalha.TurnoInimigo;
+            }
+            else
+            {
+                estadoAtual = EstadoBatalha.TurnoJogador;
+            }
+        }
+
+        if (estadoAtual == EstadoBatalha.TurnoJogador)
+        {
+            TextoTurno.text = "Turno do Jogador";
+
+            BotaoAtaque.interactable = true;
+            BotaoItem.interactable = true;
+        }
+        else
+        {
+            TextoTurno.text = "Turno do Inimigo";
+
+            BotaoAtaque.interactable = false;
+            BotaoItem.interactable = false;
+
+            StartCoroutine(AtaqueInimigo());
+        }
+    }
     IEnumerator AtaqueInimigo()
     {
         TextoResultado.gameObject.SetActive(false);
