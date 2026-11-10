@@ -47,14 +47,15 @@ public class SistemaBatalha: MonoBehaviour
     public GameObject PainelItem;
     void Start()
     {
+        statusJogador.InicializarStatus();
+        PlayerHP = statusJogador.vida;
         AtualizarUI();
     }
     public void IniciarBatalha()
     {
         Debug.Log("BATALHA INICIADA: " + inimigoAtual.Nome);
 
-        statusJogador.InicializarStatus();
-        PlayerHP = statusJogador.vida;
+       
         AtualizarUI();
         PainelBatalha.SetActive(true);
         PlayerHPTexto.gameObject.SetActive(true);
