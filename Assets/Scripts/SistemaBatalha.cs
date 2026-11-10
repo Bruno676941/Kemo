@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public enum EstadoBatalha
 {
@@ -45,10 +46,12 @@ public class SistemaBatalha: MonoBehaviour
     public StatusJogador statusJogador;
 
     public GameObject PainelItem;
+    public GameObject PainelGameOver;
     void Start()
     {
         statusJogador.InicializarStatus();
         PlayerHP = statusJogador.vida;
+        PainelGameOver.SetActive(false);
         AtualizarUI();
     }
     public void IniciarBatalha()
@@ -182,7 +185,9 @@ public class SistemaBatalha: MonoBehaviour
 
             PlayerHPTexto.text = "Game Over";
 
-            BotaoContinuar.SetActive(true);
+            BotaoContinuar.SetActive(false);
+
+            PainelGameOver.SetActive(true);
 
             yield break;
         }
@@ -196,7 +201,12 @@ public class SistemaBatalha: MonoBehaviour
         BotaoItem.interactable = true;
     }
 
-
+    public void ReiniciarJogo()
+    {
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex
+        );
+    }
     public void Continuar()
     {
         PainelBatalha.SetActive(false);
