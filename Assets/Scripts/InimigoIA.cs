@@ -3,29 +3,35 @@ using UnityEngine;
 public class InimigoIA : MonoBehaviour
 {
     public Transform player;
-    public float velocidade = 3f;
-    public float distanciaperseguicao = 10f;
 
-    public SistemaBatalha inimigoHP;
+    public float velocidade = 3f;
+    public float distanciaPerseguicao = 10f;
+    public float distanciaParada = 1.5f;
 
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distancia = Vector3.Distance(
+            transform.position,
+            player.position
+        );
 
-
-        if (distance <= distanciaperseguicao && distance > 1f)
+        if (distancia <= distanciaPerseguicao &&
+            distancia > distanciaParada)
         {
-            Vector3 direction = player.position - transform.position;
-            direction.y = 0;
+            Vector3 direcao =
+                player.position - transform.position;
 
-            if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
+            // ignora diferença de altura
+            direcao.y = 0;
 
-            transform.position = Vector3.MoveTowards(
-                transform.position, player.position, velocidade * Time.deltaTime);
+            transform.position +=
+                direcao.normalized *
+                velocidade *
+                Time.deltaTime;
+
+            transform.rotation =
+     Quaternion.LookRotation(direcao) *
+     Quaternion.Euler(0, 180, 0);
         }
-      
     }
 }
