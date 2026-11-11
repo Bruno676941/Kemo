@@ -5310,8 +5310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InimigoIA
   player: {fileID: 1484018247}
   velocidade: 6
-  distanciaperseguicao: 10
-  inimigoHP: {fileID: 1432777859}
+  distanciaPerseguicao: 10
+  distanciaParada: 1.5
 --- !u!4 &974517183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
@@ -7638,6 +7638,7 @@ MonoBehaviour:
   TextoInventario: {fileID: 1406235435}
   PainelInventario: {fileID: 717771675}
   Moedas: 0
+  GerenciadorJogo: {fileID: 0}
 --- !u!4 &1418732189
 Transform:
   m_ObjectHideFlags: 0
@@ -7752,9 +7753,9 @@ MonoBehaviour:
       forca: 4
       agilidade: 4
       vitalidade: 4
-    vida: 4
-    dano: 4
-    iniciativa: 4
+    vida: 15
+    dano: 8
+    iniciativa: 2
   PainelItem: {fileID: 1475744972}
   PainelGameOver: {fileID: 434886101}
 --- !u!4 &1432777860
@@ -7874,8 +7875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InimigoIA
   player: {fileID: 1484018247}
   velocidade: 3
-  distanciaperseguicao: 10
-  inimigoHP: {fileID: 1432777859}
+  distanciaPerseguicao: 10
+  distanciaParada: 1.5
 --- !u!4 &1466853591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 891c9292b1f1e0347892d68d3a9ff66a, type: 3}
@@ -10391,8 +10392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InimigoIA
   player: {fileID: 1484018247}
   velocidade: 6
-  distanciaperseguicao: 10
-  inimigoHP: {fileID: 1432777859}
+  distanciaPerseguicao: 10
+  distanciaParada: 1.5
 --- !u!1 &2125419290
 GameObject:
   m_ObjectHideFlags: 0

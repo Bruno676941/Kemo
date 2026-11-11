@@ -912,8 +912,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InimigoIA
   player: {fileID: 466939218}
   velocidade: 3
-  distanciaperseguicao: 10
-  inimigoHP: {fileID: 1294012585}
+  distanciaPerseguicao: 10
+  distanciaParada: 1.5
 --- !u!1 &400252128
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,7 +3913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaBatalha
   estadoAtual: 0
-  PlayerHP: 30
+  PlayerHP: 20
   iniciativa: 0
   PlayerHPTexto: {fileID: 974054514}
   InimigoHPTexto: {fileID: 1400544790}
@@ -3943,7 +3943,7 @@ MonoBehaviour:
     HP: 15
     HPMax: 15
     Dano: 6
-    Recompensa: 40
+    Recompensa: 60
     iniciativa: 4
   - Nome: KemoGoat1
     HP: 30
@@ -4475,8 +4475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InimigoIA
   player: {fileID: 466939218}
   velocidade: 3
-  distanciaperseguicao: 10
-  inimigoHP: {fileID: 1294012585}
+  distanciaPerseguicao: 10
+  distanciaParada: 1.5
 --- !u!114 &1553898099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4507,12 +4507,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 20, z: 5}
+  m_Center: {x: 0, y: 15, z: 0}
 --- !u!1 &1575383635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7146521406498821007, guid: ca78a5c301e3c2640a38ca1398c2db6e, type: 3}
@@ -6031,7 +6031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d28ebaacf9cb6a4ca44ef506d2a4c00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 57.27803
+      value: 57.028034
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d28ebaacf9cb6a4ca44ef506d2a4c00, type: 3}
       propertyPath: m_LocalPosition.z
