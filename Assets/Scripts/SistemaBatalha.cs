@@ -77,6 +77,8 @@ public class SistemaBatalha: MonoBehaviour
     }
     public void Atacar()
     {
+        Debug.Log("Clique recebido");
+        Debug.Log(estadoAtual);
         if (estadoAtual != EstadoBatalha.TurnoJogador)
         {
             return;

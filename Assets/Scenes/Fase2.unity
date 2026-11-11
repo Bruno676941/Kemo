@@ -1446,6 +1446,7 @@ RectTransform:
   - {fileID: 717771678}
   - {fileID: 643294036}
   - {fileID: 434886102}
+  - {fileID: 219182587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0.283, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2464,7 +2465,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1476906054}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4953,8 +4954,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1696574263}
+  m_Children: []
   m_Father: {fileID: 219182587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6770,6 +6770,7 @@ RectTransform:
   - {fileID: 1284836149}
   - {fileID: 614211312}
   - {fileID: 1475744973}
+  - {fileID: 2094459943}
   m_Father: {fileID: 209733649}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7748,12 +7749,12 @@ MonoBehaviour:
     iniciativa: 0
   statusJogador:
     atributos:
-      forca: 0
-      agilidade: 0
-      vitalidade: 0
-    vida: 0
-    dano: 0
-    iniciativa: 0
+      forca: 4
+      agilidade: 4
+      vitalidade: 4
+    vida: 4
+    dano: 4
+    iniciativa: 4
   PainelItem: {fileID: 1475744972}
   PainelGameOver: {fileID: 434886101}
 --- !u!4 &1432777860
@@ -10151,9 +10152,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 441810638}
   - {fileID: 2097713967}
-  - {fileID: 1476906054}
   m_Father: {fileID: 1256646763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10639,3 +10638,4 @@ SceneRoots:
   - {fileID: 1418732189}
   - {fileID: 670645612}
   - {fileID: 1690252515}
+  - {fileID: 335452299}
