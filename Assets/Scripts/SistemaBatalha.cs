@@ -20,7 +20,9 @@ public class SistemaBatalha: MonoBehaviour
     public int PlayerHP;
 
     public int iniciativa;
-
+    public Transform Jogador;
+    public Vector3 PosicaoAnteriorJogador;
+    public Vector3 PosicaoAnteriorInimigo;
     public TMP_Text PlayerHPTexto;
     public TMP_Text InimigoHPTexto;
 
@@ -39,6 +41,7 @@ public class SistemaBatalha: MonoBehaviour
     public Inventario inventario;
 
     public Movimento movimentoJogador;
+    
 
     public List<Inimigo> inimigos = new List<Inimigo>();
     private Inimigo inimigoAtual;
@@ -59,6 +62,34 @@ public class SistemaBatalha: MonoBehaviour
     public void IniciarBatalha()
     {
         Debug.Log("BATALHA INICIADA: " + inimigoAtual.Nome);
+        PosicaoAnteriorJogador = movimentoJogador.transform.position;
+        PosicaoAnteriorInimigo = inimigoObjetoAtual.transform.position;
+        Vector3 direcao =(inimigoObjetoAtual.transform.position - Jogador.position).normalized;
+
+        direcao.y = 0;
+        Jogador.position -= direcao * 2f;
+
+       inimigoObjetoAtual.transform.position += direcao * 2f;
+
+
+
+        inimigoObjetoAtual.GetComponent<InimigoIA>();
+            if (inimigoObjetoAtual.GetComponent<InimigoIA>() != null)
+        {
+            inimigoObjetoAtual.GetComponent<InimigoIA>().enabled = false;
+        }
+
+        Jogador.LookAt(inimigoObjetoAtual.transform);
+
+        Vector3 rotacao = Jogador.eulerAngles;
+        Jogador.rotation = Quaternion.Euler(0, rotacao.y, 0);
+        inimigoObjetoAtual.transform.LookAt(Jogador.transform);
+        if (SceneManager.GetActiveScene().name == "Fase2")
+        {
+            inimigoObjetoAtual.transform.Rotate(0, 90, 0);
+        }
+
+
         inimigoAtual.HP = inimigoAtual.HPMax;
         PlayerHP = statusJogador.vida;
 
@@ -74,7 +105,7 @@ public class SistemaBatalha: MonoBehaviour
         DefinirPrimeiroTurno();
         movimentoJogador.enabled = false;
 
-       
+
     }
     public void Atacar()
     {
@@ -214,8 +245,9 @@ public class SistemaBatalha: MonoBehaviour
     }
     public void Continuar()
     {
+        Jogador.position = PosicaoAnteriorJogador;
         PainelBatalha.SetActive(false);
-    }
+     }
     void AtualizarUI()
     {
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
@@ -236,7 +268,7 @@ public class SistemaBatalha: MonoBehaviour
         InimigoHPTexto.gameObject.SetActive(false);
         TextoTurno.gameObject.SetActive(false);
         TextoPocoes.text =
-    "Po��es: " + inventario.Pocoes;
+    "Pocoes: " + inventario.Pocoes;
     }
     public void FecharItens()
     {

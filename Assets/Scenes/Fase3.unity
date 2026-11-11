@@ -477,6 +477,9 @@ MonoBehaviour:
   estadoAtual: 0
   PlayerHP: 30
   iniciativa: 0
+  Jogador: {fileID: 1915733878}
+  PosicaoAnteriorJogador: {x: 0, y: 0, z: 0}
+  PosicaoAnteriorInimigo: {x: 0, y: 0, z: 0}
   PlayerHPTexto: {fileID: 1705942034}
   InimigoHPTexto: {fileID: 1602088933}
   TextoTurno: {fileID: 1903135224}
@@ -5976,7 +5979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5984,7 +5987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.17364816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5996,7 +5999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d748e06548425a46ae5aa1fcdd80095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
