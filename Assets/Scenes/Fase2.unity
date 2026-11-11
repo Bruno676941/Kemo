@@ -5788,7 +5788,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1432777859}
         m_TargetAssemblyTypeName: SistemaBatalha, Assembly-CSharp
         m_MethodName: ReiniciarJogo
         m_Mode: 1
