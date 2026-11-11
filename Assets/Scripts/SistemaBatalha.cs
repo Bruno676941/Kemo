@@ -50,6 +50,7 @@ public class SistemaBatalha: MonoBehaviour
     public GameObject PainelGameOver;
     void Start()
     {
+        AtualizarUI();
         statusJogador.InicializarStatus();
         PlayerHP = statusJogador.vida;
         PainelGameOver.SetActive(false);

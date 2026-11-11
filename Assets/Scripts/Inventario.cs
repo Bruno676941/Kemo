@@ -11,7 +11,7 @@ public class Inventario : MonoBehaviour
     public void AtualizarInventario()
     {
         TextoInventario.text =
-            "Inventário\n\n" +
+            "Inventário \n" +
             "\nMoedas: " + Moedas +
             "\nChaves: " + Chaves +
             "\nPoções: " + Pocoes;
