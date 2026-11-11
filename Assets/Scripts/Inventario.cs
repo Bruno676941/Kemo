@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventario : MonoBehaviour
 {
@@ -8,6 +9,20 @@ public class Inventario : MonoBehaviour
         public TMP_Text TextoInventario;
         public GameObject PainelInventario;
         public int Moedas;
+
+    public GameObject GerenciadorJogo;
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        TextoInventario =
+            GameObject.Find("TextoInventario")
+            .GetComponent<TMP_Text>();
+
+        PainelInventario =
+            GameObject.Find("PainelInventario");
+
+        AtualizarInventario();
+    }
     public void AtualizarInventario()
     {
         TextoInventario.text =
