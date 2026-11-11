@@ -1252,7 +1252,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'Texto
+
+
+    adfasd
+
+    asdasd
+
+    asdas'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3399,7 +3406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195, y: 46}
+  m_AnchoredPosition: {x: -195, y: 61}
   m_SizeDelta: {x: 100, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963811703
@@ -4755,7 +4762,7 @@ MonoBehaviour:
     HPMax: 15
     Dano: 6
     Recompensa: 60
-    iniciativa: 4
+    iniciativa: 1
   - Nome: KemoGoat1
     HP: 30
     HPMax: 30
@@ -4768,7 +4775,7 @@ MonoBehaviour:
       agilidade: 0
       vitalidade: 0
     vida: 20
-    dano: 5
+    dano: 8
     iniciativa: 3
   PainelItem: {fileID: 57614834}
   PainelGameOver: {fileID: 1492859878}
@@ -5525,8 +5532,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 20, z: 5}
-  m_Center: {x: 0, y: 15, z: 0}
+  m_Size: {x: 10, y: 18.095171, z: 5}
+  m_Center: {x: 0, y: 14.047586, z: 0}
 --- !u!4 &1553898101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d28ebaacf9cb6a4ca44ef506d2a4c00, type: 3}
@@ -6555,7 +6562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -194, y: 213}
+  m_AnchoredPosition: {x: -194, y: 216}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081649169

@@ -11,18 +11,6 @@ public class Inventario : MonoBehaviour
         public int Moedas;
 
     public GameObject GerenciadorJogo;
-    
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        TextoInventario =
-            GameObject.Find("TextoInventario")
-            .GetComponent<TMP_Text>();
-
-        PainelInventario =
-            GameObject.Find("PainelInventario");
-
-        AtualizarInventario();
-    }
     public void AtualizarInventario()
     {
         TextoInventario.text =

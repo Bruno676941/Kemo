@@ -95,8 +95,6 @@ public class SistemaBatalha: MonoBehaviour
 
 
         inimigoAtual.HP = inimigoAtual.HPMax;
-        PlayerHP = statusJogador.vida;
-
         AtualizarUI();
         PainelBatalha.SetActive(true);
         PlayerHPTexto.gameObject.SetActive(true);
@@ -249,13 +247,24 @@ public class SistemaBatalha: MonoBehaviour
     }
     public void Continuar()
     {
-        Jogador.position = PosicaoAnteriorJogador;
+        if (SceneManager.GetActiveScene().name == "Fase1" || SceneManager.GetActiveScene().name == "Fase4")
+        {
+            Jogador.position =
+    PosicaoAnteriorJogador + Vector3.up * 1f;
+        }
+        else
+            Jogador.position = PosicaoAnteriorJogador;
+        
         PainelBatalha.SetActive(false);
      }
     void AtualizarUI()
     {
         PlayerHPTexto.text = "Heroi HP: " + PlayerHP;
-        InimigoHPTexto.text = inimigoAtual.Nome + " HP: " + inimigoAtual.HP;
+        
+        if (inimigoAtual != null)
+        {
+            InimigoHPTexto.text = inimigoAtual.Nome + " HP: " + inimigoAtual.HP;
+        }
     }
     public void definirInimigo(string Nome, GameObject objeto)
     {
