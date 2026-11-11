@@ -4404,19 +4404,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4424,7 +4424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6336,6 +6336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SistemaBatalha
   estadoAtual: 0
   PlayerHP: 30
+  iniciativa: 0
   PlayerHPTexto: {fileID: 757948866}
   InimigoHPTexto: {fileID: 2060425030}
   TextoTurno: {fileID: 290570594}
@@ -6353,22 +6354,35 @@ MonoBehaviour:
     HPMax: 20
     Dano: 5
     Recompensa: 10
+    iniciativa: 0
   - Nome: Cogumelo
     HP: 15
     HPMax: 15
     Dano: 8
     Recompensa: 12
+    iniciativa: 0
   - Nome: PedraBuxa
     HP: 18
     HPMax: 18
     Dano: 2
     Recompensa: 5
+    iniciativa: 0
   - Nome: Abelhinha
     HP: 24
     HPMax: 24
     Dano: 3
     Recompensa: 8
-  PainelItem: {fileID: 0}
+    iniciativa: 0
+  statusJogador:
+    atributos:
+      forca: 0
+      agilidade: 0
+      vitalidade: 0
+    vida: 0
+    dano: 0
+    iniciativa: 0
+  PainelItem: {fileID: 717771675}
+  PainelGameOver: {fileID: 0}
 --- !u!4 &1432777860
 Transform:
   m_ObjectHideFlags: 0
@@ -6803,6 +6817,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020285843, y: 0.019455539, z: 0.020326318}
   m_Center: {x: 0.000052589003, y: -0.000108340304, z: -0.00014880116}
+--- !u!1 &1690252514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690252515}
+  m_Layer: 0
+  m_Name: ColisorInimigo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1690252515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690252514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.59993, y: 0.96781, z: -71.75014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732564728
 GameObject:
   m_ObjectHideFlags: 0
@@ -8052,19 +8097,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8072,7 +8117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca32deebbd8519f4faec505a633b16fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -8520,3 +8565,4 @@ SceneRoots:
   - {fileID: 1432777860}
   - {fileID: 1418732189}
   - {fileID: 670645612}
+  - {fileID: 1690252515}
