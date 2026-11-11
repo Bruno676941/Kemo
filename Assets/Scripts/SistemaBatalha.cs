@@ -84,9 +84,13 @@ public class SistemaBatalha: MonoBehaviour
         Vector3 rotacao = Jogador.eulerAngles;
         Jogador.rotation = Quaternion.Euler(0, rotacao.y, 0);
         inimigoObjetoAtual.transform.LookAt(Jogador.transform);
-        if (SceneManager.GetActiveScene().name == "Fase2")
+        if (SceneManager.GetActiveScene().name == "Fase2" )
         {
             inimigoObjetoAtual.transform.Rotate(0, 90, 0);
+        }
+        else if (SceneManager.GetActiveScene().name == "Fase4")
+        {
+            inimigoObjetoAtual.transform.Rotate(0, 90, 20);
         }
 
 
