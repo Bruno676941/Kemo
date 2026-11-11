@@ -59,8 +59,9 @@ public class SistemaBatalha: MonoBehaviour
     public void IniciarBatalha()
     {
         Debug.Log("BATALHA INICIADA: " + inimigoAtual.Nome);
+        inimigoAtual.HP = inimigoAtual.HPMax;
+        PlayerHP = statusJogador.vida;
 
-       
         AtualizarUI();
         PainelBatalha.SetActive(true);
         PlayerHPTexto.gameObject.SetActive(true);
