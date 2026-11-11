@@ -1,59 +1,76 @@
-using Unity.InferenceEngine;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.UIElements;
 
 public class Movimento : MonoBehaviour
 {
-    
     private CharacterController controller;
+
     public Transform Player;
+    public Transform CameraTransform;
+
     public float VelocidadeMovimento = 5f;
-    public float VelocidadeCorrida = 20f;
+    public float VelocidadeCorrida = 8f;
     public float ForcaPulo = 7f;
     public float Gravidade = -9.81f;
-    private float VelocidadeY;
-    public float alturaDoChao = 1f;
     public float suavidadeRotacao = 5f;
+
+    private float VelocidadeY;
+
     void Start()
     {
-     controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
+
     void Update()
     {
         float movimentoHorizontal = Input.GetAxis("Horizontal");
         float movimentoVertical = Input.GetAxis("Vertical");
 
-        Vector3 direcao = new Vector3(movimentoHorizontal, 0f, movimentoVertical).normalized;
+        float velocidadeAtual = Input.GetKey(KeyCode.LeftShift)
+            ? VelocidadeCorrida
+            : VelocidadeMovimento;
 
-        float velocidadeAtual = VelocidadeMovimento;
-        if (Input.GetKey(KeyCode.LeftShift))
+        Vector3 frenteCamera = CameraTransform.forward;
+        Vector3 direitaCamera = CameraTransform.right;
+
+        frenteCamera.y = 0;
+        direitaCamera.y = 0;
+
+        frenteCamera.Normalize();
+        direitaCamera.Normalize();
+
+        Vector3 direcao =
+            frenteCamera * movimentoVertical +
+            direitaCamera * movimentoHorizontal;
+
+        if (controller.isGrounded)
         {
-            velocidadeAtual = VelocidadeCorrida; 
+            VelocidadeY = -2f;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                VelocidadeY = ForcaPulo;
+            }
         }
 
         VelocidadeY += Gravidade * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y <= alturaDoChao + 0.05f)
-        {
-            VelocidadeY = ForcaPulo;
-        }
+        Vector3 movimento =
+            direcao.normalized * velocidadeAtual;
 
-        if (transform.position.y < alturaDoChao)
-        {
-            transform.position = new Vector3(transform.position.x, alturaDoChao, transform.position.z);
-            VelocidadeY = 0f;
-        }
-        Vector3 movimento = new Vector3(movimentoHorizontal * velocidadeAtual, VelocidadeY, movimentoVertical * velocidadeAtual);
+        movimento.y = VelocidadeY;
+
         controller.Move(movimento * Time.deltaTime);
 
-        if (direcao.sqrMagnitude >= 0.01f)
+        if (direcao.magnitude > 0.1f)
         {
-            Quaternion rotacaoDesejada = Quaternion.LookRotation(direcao);
+            Quaternion rotacaoDesejada =
+                Quaternion.LookRotation(direcao);
 
-            Player.rotation = Quaternion.Slerp(Player.rotation, rotacaoDesejada, suavidadeRotacao * Time.deltaTime);
+            Player.rotation = Quaternion.Slerp(
+                Player.rotation,
+                rotacaoDesejada,
+                suavidadeRotacao * Time.deltaTime
+            );
         }
     }
 }
-
-
